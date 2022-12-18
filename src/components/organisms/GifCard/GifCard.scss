@@ -1,0 +1,48 @@
+.gifCard {
+  position: relative;
+  width: 250px;
+
+  &__image {
+    padding-top: 30px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin: 0 30px 0 30px;
+    z-index: 20;
+  }
+
+  &__icon {
+    position: absolute;
+    z-index: 10;
+    top: 40px;
+    right: -20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  &__modal {
+    color: white;
+    padding-left: 50px;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+  }
+
+  &__div {
+    height: 10px;
+  }
+
+  &__eliminar {
+    font-weight: bold;
+  }
+  &__cancelar {
+    font-weight: bold;
+    background-color: white;
+    color: #b234b1;
+    border: 2px solid #b234b1;
+  }
+}

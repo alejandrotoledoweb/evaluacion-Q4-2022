@@ -1,0 +1,24 @@
+.input {
+  width: 200px;
+  height: 30px;
+  padding-top: 2px;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 2px solid lightgrey;
+  color: lightgrey;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+
+  &--error {
+    border: 1px solid red;
+  }
+
+  &__message {
+    color: red;
+    font-weight: bold;
+  }
+}
+
+.input:focus {
+  color: black;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}

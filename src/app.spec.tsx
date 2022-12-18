@@ -82,6 +82,12 @@ describe("App component", () => {
       },
     ] as Gif[]);
 
+    axiosMock.onDelete("").reply(200, {
+      id: 86,
+      url: "gifno1",
+      author_id: 8,
+    });
+
     render(<App />);
     const gifInput = screen.getByPlaceholderText("Gift URL");
     const gifButton = screen.getByText("Agregar");

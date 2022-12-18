@@ -2,7 +2,7 @@ import axios from "axios";
 import { AUTHOR_ID, BASE_URL } from "../../utils/constants/gifUrlConstants";
 import { Gif } from "../../utils/interfaces/gif.interface";
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: `${BASE_URL}`,
   headers: { "Content-Type": "application/json" },
 });

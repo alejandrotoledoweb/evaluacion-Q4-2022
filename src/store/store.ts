@@ -33,6 +33,7 @@ class Store {
 
   async getAllGifs() {
     const returnedGifs = await GifService.getGifs();
+    // console.log(returnedGifs);
     runInAction(() => {
       this.AllGifs = returnedGifs;
     });

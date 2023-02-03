@@ -7,4 +7,12 @@ describe("button", () => {
     const button = screen.getByText("Agregar");
     expect(button).toBeVisible();
   });
+  it("should call the onClick event", () => {
+    const onClick = jest.fn();
+    render(<Button onClick={onClick}>Agregar</Button>);
+    const button = screen.getByText("Agregar");
+    expect(button).toBeVisible();
+    fireEvent.click(button);
+    expect(button).toHaveBeenCalled();
+  });
 });

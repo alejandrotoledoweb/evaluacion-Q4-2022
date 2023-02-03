@@ -3,7 +3,7 @@ import React, { FC, useState } from "react";
 interface GifCardProps {
   image: string;
   gifAlt: string;
-  description: string;
+  description: string | number;
   onDelete?: React.MouseEventHandler<HTMLElement>;
 }
 

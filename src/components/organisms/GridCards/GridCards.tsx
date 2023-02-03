@@ -3,22 +3,18 @@ import GifCard from "../../molecules/GifCard/GifCard";
 
 interface GifCardProps {
   images: {
-    id: string;
+    id: number;
     url: string;
-    author_id: string;
+    author_id: number;
   }[];
 }
 
 const GridCards: FC<GifCardProps> = ({ images }) => {
   return (
     <div className="grid-cards-container">
-      {images.map((image) => (
+      {images.map(image => (
         <div key={image.id}>
-          <GifCard
-            image={image.url}
-            gifAlt={image.url}
-            description={image.id}
-          />
+          <GifCard image={image.url} gifAlt={image.url} description={image.id} />
         </div>
       ))}
     </div>

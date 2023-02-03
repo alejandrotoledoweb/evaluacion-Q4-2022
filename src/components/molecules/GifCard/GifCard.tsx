@@ -14,7 +14,7 @@ const GifCard: FC<GifCardProps> = ({ image, gifAlt, onDelete }) => {
   };
   return (
     <div className="gif-card-container">
-      <img src={image} alt={gifAlt} />
+      <img src={image} alt={image} />
       <div className="delete-icon-container" onClick={handleShow}>
         <img src={"iconurl"} alt={"delete-icon"} />
       </div>

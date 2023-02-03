@@ -7,18 +7,20 @@ describe("GifCard", () => {
     render(
       <GifCard
         image={"https://media.tenor.com/Lk1coQ37K0MAAAAS/the-avengers-avengers.gif"}
-        gifAlt="Imagen gif"
+        gifAlt="https://media.tenor.com/Lk1coQ37K0MAAAAS/the-avengers-avengers.gif"
         description={"description"}
       />
     );
-    expect(screen.getByAltText("Imagen gif")).toBeVisible();
+    expect(
+      screen.getByAltText("https://media.tenor.com/Lk1coQ37K0MAAAAS/the-avengers-avengers.gif")
+    ).toBeVisible();
   });
 
   it("should render the delete icon", () => {
     render(
       <GifCard
         image={"https://media.tenor.com/Lk1coQ37K0MAAAAS/the-avengers-avengers.gif"}
-        gifAlt="Imagen gif"
+        gifAlt="https://media.tenor.com/Lk1coQ37K0MAAAAS/the-avengers-avengers.gif"
         description={"description"}
         onDelete={onClick}
       />
@@ -30,7 +32,7 @@ describe("GifCard", () => {
     render(
       <GifCard
         image={"https://media.tenor.com/Lk1coQ37K0MAAAAS/the-avengers-avengers.gif"}
-        gifAlt="Imagen gif"
+        gifAlt="https://media.tenor.com/Lk1coQ37K0MAAAAS/the-avengers-avengers.gif"
         description={"description"}
         onDelete={onClick}
       />

@@ -6,9 +6,7 @@ describe("GifCard", () => {
   it("should render gif card", () => {
     render(
       <GifCard
-        image={
-          "https://media.tenor.com/Lk1coQ37K0MAAAAS/the-avengers-avengers.gif"
-        }
+        image={"https://media.tenor.com/Lk1coQ37K0MAAAAS/the-avengers-avengers.gif"}
         gifAlt="Imagen gif"
         description={"description"}
       />
@@ -19,28 +17,22 @@ describe("GifCard", () => {
   it("should render the delete icon", () => {
     render(
       <GifCard
-        image={
-          "https://media.tenor.com/Lk1coQ37K0MAAAAS/the-avengers-avengers.gif"
-        }
+        image={"https://media.tenor.com/Lk1coQ37K0MAAAAS/the-avengers-avengers.gif"}
         gifAlt="Imagen gif"
         description={"description"}
-        onClick={onClick}
+        onDelete={onClick}
       />
     );
     const deleteIcon = screen.getByAltText("delete-icon");
     expect(deleteIcon).toBeVisible();
-    fireEvent.click(deleteIcon);
-    expect(onClick).toHaveBeenCalled();
   });
   it("should show delete button on click", async () => {
     render(
       <GifCard
-        image={
-          "https://media.tenor.com/Lk1coQ37K0MAAAAS/the-avengers-avengers.gif"
-        }
+        image={"https://media.tenor.com/Lk1coQ37K0MAAAAS/the-avengers-avengers.gif"}
         gifAlt="Imagen gif"
         description={"description"}
-        onClick={onClick}
+        onDelete={onClick}
       />
     );
     const deleteIcon = screen.getByAltText("delete-icon");

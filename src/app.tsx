@@ -1,78 +1,64 @@
 import DeleteIcon from "./assets/delete-icon.svg";
 import WarningIcon from "./assets/warning-icon.svg";
-import { observer } from "mobx-react";
+
 import "./app.scss";
-import { SearchBar } from "./components/molecules/searchBar/searchBar";
-import React, { useState, useEffect } from "react";
-import store from "./store/store";
-import { GifCard } from "./components/organisms/GifCard/GifCard";
-import { AUTHOR_ID } from "./utils/constants/gifUrlConstants";
-import { Gif } from "./utils/interfaces/gif.interface";
 
-const App: React.FC = observer(() => {
-  const [gifName, setGifName] = useState<string>("");
-  const [error, setError] = useState<boolean>(false);
-
-  const AllGifs = [
-    {
-      id: 160,
-      url: "https://media.tenor.com/WxflQIGfOYkAAAAj/spider-man-no-way-home-marvel-studios.gif",
-      author_id: 8,
-    },
-    {
-      id: 161,
-      url: "https://media.tenor.com/OPY5wP4jY7cAAAAj/avengers-endgame.gif",
-      author_id: 8,
-    },
-    {
-      id: 162,
-      url: "https://media.tenor.com/ASs_x_mykqUAAAAM/avengers-marvel-cinematic-universe.gif",
-      author_id: 8,
-    },
-  ];
-
-  useEffect(() => {
-    store.getAllGifs();
-  }, []);
-
-  const addNewGif = () => {
-    if (!gifName || gifName == null) {
-      setError(true);
-    } else {
-      const newGif = {
-        url: gifName,
-        author_id: AUTHOR_ID,
-      };
-      store.addNewGif(newGif);
-      setError(false);
-      setGifName("");
-    }
-  };
-  const handleChange = (gifUrl: string) => {
-    setGifName(gifUrl);
-  };
-
-  const handleDelete = (gif: Gif) => {
-    store.deleteGif(gif);
-  };
+const App = () => {
   return (
     <div className="app">
-      <h2 className="title">Gif Galery</h2>
-      <SearchBar handleChange={handleChange} handleAdd={addNewGif} classError={error} />
-
-      <div className="app__gifs">
-        {store?.AllGifs?.map(gif => (
-          <GifCard gif={gif} key={Math.random()} onDelete={() => handleDelete(gif)} />
-        ))}
-        {!store?.AllGifs && (
-          <div>
-            <img className="app__icon" src={WarningIcon} alt="Warning icon" />
-            <p className="app__empty">No hay Gifs</p>
+      <h1>Evaluación Técnica Q4 2022</h1>
+      <section>
+        <h2>Colores</h2>
+        <div className="app__color-container">
+          <span className="app__color-title">Principal</span>
+          <div className="app__color app__color--main"></div>
+          <code>#B234B1</code>
+        </div>
+        <div className="app__color-container">
+          <span className="app__color-title">Fondo</span>
+          <div className="app__color app__color--background"></div>
+          <code>#1C1C1C</code>
+        </div>
+      </section>
+      <section>
+        <h2>Íconos</h2>
+        <div className="app__icon-container">
+          <div className="app__icon-description">
+            <img className="app__icon" src={DeleteIcon} alt="Delete icon" />
+            <span>Delete icon</span>
           </div>
-        )}
-      </div>
+          <div className="app__icon-description">
+            <img className="app__icon" src={WarningIcon} alt="Warning icon" />
+            <span className="app__color-title">Warning icon</span>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>API REST</h2>
+        <div>
+          <a
+            href="https://documenter.getpostman.com/view/21329689/2s8YsnYwZr"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Documentación de la API REST
+          </a>
+        </div>
+      </section>
+      <section>
+        <h2>GIFs</h2>
+        <div>
+          <a
+            href="https://tenor.com/es-419/search/avengers-gifs"
+            rel="noreferrer"
+            target="_blank"
+          >
+            Página de GIFs
+          </a>
+        </div>
+      </section>
     </div>
   );
-});
+};
 
 export default App;

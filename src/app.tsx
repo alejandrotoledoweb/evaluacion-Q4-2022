@@ -4,7 +4,6 @@ import WarningIcon from "./assets/warning-icon.svg";
 import { Input } from "./components/atoms/Input/Input";
 import Button from "./components/atoms/Button/Button";
 import GridCards from "./components/organisms/GridCards/GridCards";
-import { Gif } from "./utils/interfaces/gif.interface";
 import "./app.scss";
 import { useGifsContext } from "./context/gif-context";
 import { AUTHOR_ID } from "./utils/constants/global";

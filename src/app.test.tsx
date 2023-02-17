@@ -3,6 +3,7 @@ import App from "./app";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { Gif } from "./utils/interfaces/gif.interface";
+import { GifsProvider } from "./context/gif-context";
 
 const axiosMock = new MockAdapter(axios);
 
@@ -15,7 +16,11 @@ describe("App component", () => {
 
   it("should add a gif to grid", async () => {
     axiosMock.onPost().reply(200, [{ id: 1, url: "gift1.com", author_id: 8 }] as Gif[]);
-    render(<App />);
+    render(
+      <GifsProvider>
+        <App />
+      </GifsProvider>
+    );
     const input = screen.getByPlaceholderText("GIFT URL");
     const button = screen.getByText("Agregar");
     expect(input).toHaveValue("");
@@ -23,8 +28,8 @@ describe("App component", () => {
     fireEvent.change(input, { target: { value: "gift1.com" } });
     fireEvent.click(button);
     expect(input).toHaveValue("gift1.com");
-    // await waitFor(() => {
-    //   screen.getByAltText("gift1.com");
-    // });
+    await waitFor(() => {
+      screen.getByAltText("gift1.com");
+    });
   });
 });

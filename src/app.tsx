@@ -1,11 +1,31 @@
+import { useState } from "react";
 import DeleteIcon from "./assets/delete-icon.svg";
 import WarningIcon from "./assets/warning-icon.svg";
-
+import { Input } from "./components/atoms/Input/Input";
+import Button from "./components/atoms/Button/Button";
+import GridCards from "./components/organisms/GridCards/GridCards";
+import { Gif } from "./utils/interfaces/gif.interface";
 import "./app.scss";
 
+
 const App = () => {
+  const [inputValue, setInputValue] = useState("");
+  const [gifs, setGifs] = useState<Gif[]>([]);
+  const handleClick = () => {
+    setGifs((prevState) => [
+      ...prevState,
+      { id: 1, url: inputValue, author_id: 8 },
+    ]);
+  };
   return (
     <div className="app">
+      <h1>gif gallery</h1>
+      <Input
+        placeholder={"GIFT URL"}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <Button children={"Agregar"} onClick={handleClick} />
+      <GridCards images={gifs} />
       {/* <h1>Evaluación Técnica Q4 2022</h1>
       <section>
         <h2>Colores</h2>

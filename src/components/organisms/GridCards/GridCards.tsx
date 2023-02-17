@@ -3,7 +3,7 @@ import GifCard from "../../molecules/GifCard/GifCard";
 
 interface GifCardProps {
   images: {
-    id: number;
+    id: number ;
     url: string;
     author_id: number;
   }[];

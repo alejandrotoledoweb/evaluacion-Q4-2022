@@ -16,5 +16,5 @@ export interface GifsProviderProps {
 }
 export const GifsProvider: FC<GifsProviderProps> = ({ children, initialValue }) => {
   const values = useGifs(initialValue);
-  return <GifContext.Provider value={values}></GifContext.Provider>;
+  return <GifContext.Provider value={values}>{children}</GifContext.Provider>;
 };

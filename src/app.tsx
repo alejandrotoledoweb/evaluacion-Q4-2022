@@ -6,26 +6,26 @@ import Button from "./components/atoms/Button/Button";
 import GridCards from "./components/organisms/GridCards/GridCards";
 import { Gif } from "./utils/interfaces/gif.interface";
 import "./app.scss";
-
+import { useGifsContext } from "./context/gif-context";
+import { AUTHOR_ID } from "./utils/constants/global";
 
 const App = () => {
+  const { allGifs, addNewGif } = useGifsContext();
   const [inputValue, setInputValue] = useState("");
-  const [gifs, setGifs] = useState<Gif[]>([]);
+
   const handleClick = () => {
-    setGifs((prevState) => [
-      ...prevState,
-      { id: 1, url: inputValue, author_id: 8 },
-    ]);
+    const newGif = {
+      url: inputValue,
+      author_id: AUTHOR_ID,
+    };
+    addNewGif(newGif);
   };
   return (
     <div className="app">
       <h1>gif gallery</h1>
-      <Input
-        placeholder={"GIFT URL"}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
+      <Input placeholder={"GIFT URL"} onChange={e => setInputValue(e.target.value)} />
       <Button children={"Agregar"} onClick={handleClick} />
-      <GridCards images={gifs} />
+      <GridCards images={allGifs} />
       {/* <h1>Evaluación Técnica Q4 2022</h1>
       <section>
         <h2>Colores</h2>

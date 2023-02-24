@@ -3,6 +3,7 @@ import { Gif } from "../../../utils/interfaces/gif.interface";
 import "./GifCard.scss";
 import DeleteIcon from "../../../assets/delete-icon.svg";
 import { Button } from "../../atoms/button/Button";
+import classNames from "classnames";
 
 interface GifProps {
   gif: Gif;
@@ -15,10 +16,14 @@ export const GifCard: React.FC<GifProps> = ({ gif, onDelete }) => {
     setShowDelete(!showDelete);
   };
   return (
-    <div className="gifCard">
-      <img src={gif.url} alt={gif.url} className="gifCard__image" />
+    <div className={classNames({ gifCard: true })}>
+      <img
+        src={gif.url}
+        alt={gif.url}
+        className={classNames({ gifCard__image: true, "gifCard--modal": showDelete })}
+      />
       <div onClick={handleShow}>
-        <img className="gifCard__icon" src={DeleteIcon} alt="Delete icon" />
+        <img className={classNames({ gifCard__icon: true })} src={DeleteIcon} alt="Delete icon" />
       </div>
       {showDelete && (
         <div className="gifCard__modal">

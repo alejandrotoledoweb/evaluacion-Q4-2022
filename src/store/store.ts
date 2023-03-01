@@ -1,6 +1,9 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { Gif } from "../utils/interfaces/gif.interface";
 import { GifService } from "../services/gifServices/gif.service";
+import { AUTHOR_ID, BASE_URL } from "../utils/constants/gifUrlConstants";
+import axios from "axios";
+import { stringify } from "querystring";
 
 const AllGifs = [
   {
@@ -46,10 +49,11 @@ class Store {
     });
   }
 
-  async deleteGif(gifs: Gif) {
-    const deletedGif = await GifService.deleteGif(gifs);
+  async deleteGif(gifDelete: Gif) {
+    const deletedGif = await GifService.deleteGif(gifDelete);
+
     runInAction(() => {
-      const updatedGifs = this.AllGifs.filter(gif => gif.id !== gifs.id);
+      const updatedGifs = this.AllGifs.filter(gif => gif.id !== gifDelete.id);
       this.AllGifs = updatedGifs;
     });
   }

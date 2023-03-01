@@ -32,17 +32,18 @@ export class GifService {
 
   static async deleteGif(gif: Gif) {
     try {
-      const body = {
-        id: gif.id,
-        url: gif.url,
-        author_id: AUTHOR_ID,
-      };
-      const { data } = await axiosInstance.delete("", body);
+      const { data } = await axiosInstance.delete("", {
+        data: {
+          id: gif.id,
+          url: gif.url,
+          author_id: AUTHOR_ID,
+        },
+      });
       if (data) {
         return data;
       }
     } catch (e) {
-      console.log(e);
+      console.log({ error: e });
     }
   }
 }
